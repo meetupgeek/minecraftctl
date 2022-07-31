@@ -33,6 +33,8 @@ func_status () {
         return 0
     else
         echo -e "${MCFILE} prosecce is may be stopped"
+        echo -e "----LOG----"
+        tail -10 "${MCLOG}"
         return 0
     fi
 }
@@ -73,4 +75,4 @@ case "${COMMAND}" in
         echo -e "USAGE: $0 [status|start|stop]"
         exit 1 ;;
 esac
-exit 0
+exit $?

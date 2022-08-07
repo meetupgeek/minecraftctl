@@ -28,13 +28,13 @@ func_status () {
     eval ${PSCHK}
     if [ $? -eq 0 ] ; then
         echo -e "${MCFILE} prosecce is already running"
-        echo -e "----LOG----"
-        tail -10 "${MCLOG}"
-        return 0
     else
         echo -e "${MCFILE} prosecce is may be stopped"
-        return 0
     fi
+
+    echo -e "----LOG----"
+    tail -10 "${MCLOG}"
+    return 0
 }
 
 func_start () {
@@ -73,4 +73,4 @@ case "${COMMAND}" in
         echo -e "USAGE: $0 [status|start|stop]"
         exit 1 ;;
 esac
-exit 0
+exit $?
